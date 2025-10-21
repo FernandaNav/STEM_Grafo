@@ -16,11 +16,26 @@ class FormularioManager:
             "Ingeniería": ["¿Te gusta construir cosas?","¿Te interesa Robótica?","¿Te interesa Electrónica?",
                            "¿Tienes habilidades matemáticas?","¿Quieres hacer innovación tecnológica?"]
         }
+        # Ventana premium para formularios
         top = ctk.CTkToplevel(self.grafo.master)
-        top.title(f"Decisiones: {self.area}")
-        top.geometry("400x350")
+        top.title(f"Evaluacion de {self.area}")
+        top.geometry("500x450")
         top.attributes('-topmost', True)
-        ctk.CTkLabel(top,text=f"Decisiones para {self.area}",font=("Arial",16,"bold")).pack(pady=10)
+        top.configure(fg_color="#0D1117")
+        
+        # Header del formulario
+        header = ctk.CTkFrame(top, fg_color="#161B22", corner_radius=12)
+        header.pack(fill="x", padx=20, pady=20)
+        
+        ctk.CTkLabel(header,
+                    text=f"EVALUACION DE {self.area.upper()}",
+                    font=("Segoe UI", 18, "bold"),
+                    text_color="#58A6FF").pack(pady=15)
+        
+        ctk.CTkLabel(header,
+                    text="Responde las siguientes preguntas para obtener tu ruta personalizada",
+                    font=("Segoe UI", 12),
+                    text_color="#7D8590").pack(pady=(0, 15))
 
         self.vars=[]
         for p in preguntas_dict[self.area]:
